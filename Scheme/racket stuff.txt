@@ -1,0 +1,29 @@
+(define (rev list)
+  (if (null? list)
+     empty
+     (append (rev (cdr list)) (cons (car list) empty))))
+
+
+
+(define (evens lst)
+	(if (or (null? lst)             ; if the list is empty 
+		(null? (cdr lst)))      ; or the list has a single element
+           '()                          ; then return the empty list
+            (cons (cadr lst)            ; otherwise `cons` the second element
+                 (evens (cddr lst)))))  ; and recursively advance two elements
+
+
+ (define (evens list)
+    (define (rev list)
+      (if (null? list)
+          empty
+          (append (rev (cdr list)) (cons (car list) empty))))
+
+	(if (or (null? list)            ; if the list is empty 
+		(null? (cdr list)))     ; or the list has a single element
+           '()                          ; then return the empty list
+            (cons (cadr list)           ; otherwise `cons` the second element
+                 (evens (cddr list))))  ; and recursively advance two elements
+    (rev list))
+
+  (evens list)
